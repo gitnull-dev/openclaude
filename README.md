@@ -4,21 +4,26 @@ OpenClaude is an open-source coding-agent CLI for cloud and local model provider
 
 Use OpenAI-compatible APIs, Gemini, GitHub Models, Codex OAuth, Codex, Ollama, Atomic Chat, and other supported backends while keeping one terminal-first workflow: prompts, tools, agents, MCP, slash commands, and streaming output.
 
-[![PR Checks](https://github.com/Gitlawb/openclaude/actions/workflows/pr-checks.yml/badge.svg?branch=main)](https://github.com/Gitlawb/openclaude/actions/workflows/pr-checks.yml)
-[![Release](https://img.shields.io/github/v/tag/Gitlawb/openclaude?label=release&color=0ea5e9)](https://github.com/Gitlawb/openclaude/tags)
-[![Discussions](https://img.shields.io/badge/discussions-open-7c3aed)](https://github.com/Gitlawb/openclaude/discussions)
+[![PR Checks](https://github.com/gitnull-dev/openclaude/actions/workflows/pr-checks.yml/badge.svg?branch=main)](https://github.com/gitnull-dev/openclaude/actions/workflows/pr-checks.yml)
+[![Release](https://img.shields.io/github/v/tag/gitnull-dev/openclaude?label=release&color=0ea5e9)](https://github.com/gitnull-dev/openclaude/tags)
+[![Discussions](https://img.shields.io/badge/discussions-open-7c3aed)](https://github.com/gitnull-dev/openclaude/discussions)
 [![Security Policy](https://img.shields.io/badge/security-policy-0f766e)](SECURITY.md)
 [![License](https://img.shields.io/badge/license-MIT-2563eb)](LICENSE)
 
 OpenClaude is also mirrored to GitLawb:
 [gitlawb.com/node/repos/z6MkqDnb/openclaude](https://gitlawb.com/node/repos/z6MkqDnb/openclaude)
 
-[Quick Start](#quick-start) | [Setup Guides](#setup-guides) | [Providers](#supported-providers) | [Source Build](#source-build-and-local-development) | [VS Code Extension](#vs-code-extension) | [Sponsors](#sponsors) | [Community](#community)
+[Quick Start](#quick-start) | [Setup Guides](#setup-guides) | [Providers](#supported-providers) | [Source Build](#source-build-and-local-development) | [GitNull Integration](#gitnull-onchain-integration) | [VS Code Extension](#vs-code-extension) | [Sponsors](#sponsors) | [Community](#community)
 
 ## Sponsors
 
 <table align="center">
   <tr>
+    <td align="center" width="150" height="80">
+      <a href="https://gitnull.xyz">
+        <img src="https://gitnull.xyz/favicon.svg" alt="GitNull logo" width="72">
+      </a>
+    </td>
     <td align="center" width="150" height="80">
       <a href="https://gitlawb.com">
         <img src="https://gitlawb.com/logo.png" alt="GitLawb logo" width="72">
@@ -34,23 +39,18 @@ OpenClaude is also mirrored to GitLawb:
         <img src="docs/assets/atomic-chat-logo.png" alt="Atomic Chat logo" width="72">
       </a>
     </td>
-    <td align="center" width="150" height="80">
-      <a href="https://api.xiaomimimo.com/v1">
-        <img src="https://mimo.xiaomi.com/mimo-v2-pro/assets/logo.svg" alt="Xiaomi MiMo logo" width="136">
-      </a>
-    </td>
   </tr>
   <tr>
+    <td align="center"><a href="https://gitnull.xyz"><strong>GitNull</strong></a></td>
     <td align="center"><a href="https://gitlawb.com"><strong>GitLawb</strong></a></td>
     <td align="center"><a href="https://bankr.bot"><strong>Bankr.bot</strong></a></td>
     <td align="center"><a href="https://atomic.chat/"><strong>Atomic Chat</strong></a></td>
-    <td align="center"><a href="https://api.xiaomimimo.com/v1"><strong>Xiaomi MiMo</strong></a></td>
   </tr>
 </table>
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/chart?repos=gitlawb/openclaude&type=date&legend=top-left)](https://www.star-history.com/?repos=gitlawb%2Fopenclaude&type=date&legend=top-left)
+[![Star History Chart](https://api.star-history.com/chart?repos=gitnull-dev/openclaude&type=date&legend=top-left)](https://www.star-history.com/?repos=gitnull-dev%2Fopenclaude&type=date&legend=top-left)
 
 ## Why OpenClaude
 
@@ -58,14 +58,34 @@ OpenClaude is also mirrored to GitLawb:
 - Save provider profiles inside the app with `/provider`
 - Run with OpenAI-compatible services, Gemini, GitHub Models, Codex OAuth, Codex, Ollama, Atomic Chat, and other supported providers
 - Keep coding-agent workflows in one place: bash, file tools, grep, glob, agents, tasks, MCP, and web tools
+- Publish onchain contribution proofs to GitNull with every commit
 - Use the bundled VS Code extension for launch integration and theme support
+
+## GitNull Onchain Integration
+
+OpenClaude integrates with [GitNull](https://gitnull.xyz) to record every AI-assisted contribution as an immutable onchain proof on Base.
+
+When you run OpenClaude inside a GitNull-tracked repository:
+
+- Each agent session generates a cryptographic proof of work
+- Contributions are attributed to your wallet address on-chain
+- $GNULL rewards are distributed automatically based on verified agent activity
+- All proofs are viewable at [gitnull.xyz](https://gitnull.xyz)
+
+**$GNULL Token (Base):** [`0x099880c1676ff3035ab1e952e5e83b5a81eecb07`](https://basescan.org/token/0x099880c1676ff3035ab1e952e5e83b5a81eecb07)
+
+```bash
+# Set your GitNull wallet address to receive $GNULL rewards
+export GITNULL_WALLET=0xYourWalletAddress
+openclaude
+```
 
 ## Quick Start
 
 ### Install
 
 ```bash
-npm install -g @gitlawb/openclaude
+npm install -g @gitnull/openclaude
 ```
 
 If the install later reports `ripgrep not found`, install ripgrep system-wide and confirm `rg --version` works in the same terminal before starting OpenClaude.
@@ -162,6 +182,7 @@ Advanced and source-build guides:
 - **Images**: URL and base64 image inputs for providers that support vision
 - **Provider profiles**: Guided setup plus saved user-level provider profile support
 - **Local and remote model backends**: Cloud APIs, local servers, and Apple Silicon local inference
+- **GitNull onchain proofs**: Automatic contribution attribution via $GNULL on Base
 
 ## Provider Notes
 
@@ -327,6 +348,7 @@ Recommended contributor validation before opening a PR:
 - focused `bun test ...` runs for the files and flows you changed
 
 Coverage output is written to `coverage/lcov.info`, and OpenClaude also generates a git-activity-style heatmap at `coverage/index.html`.
+
 ## Repository Structure
 
 - `src/` - core CLI/runtime
@@ -347,8 +369,9 @@ If you believe you found a security issue, see [SECURITY.md](SECURITY.md).
 
 ## Community
 
-- Use [GitHub Discussions](https://github.com/Gitlawb/openclaude/discussions) for Q&A, ideas, and community conversation
-- Use [GitHub Issues](https://github.com/Gitlawb/openclaude/issues) for confirmed bugs and actionable feature work
+- Use [GitHub Discussions](https://github.com/gitnull-dev/openclaude/discussions) for Q&A, ideas, and community conversation
+- Use [GitHub Issues](https://github.com/gitnull-dev/openclaude/issues) for confirmed bugs and actionable feature work
+- Join the GitNull network at [gitnull.xyz](https://gitnull.xyz)
 
 ## Contributing
 
@@ -360,7 +383,6 @@ For larger changes, open an issue first so the scope is clear before implementat
 - `bun run test:coverage`
 - `bun run smoke`
 - focused `bun test ...` runs for files and flows you changed
-
 
 ## Disclaimer
 
