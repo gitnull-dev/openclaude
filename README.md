@@ -233,6 +233,30 @@ Free tier at [firecrawl.dev](https://firecrawl.dev) includes 500 credits. The ke
 
 ---
 
+## Ecosystem Integrations
+
+### GitNull — Onchain Contribution Proofs
+
+[GitNull](https://gitnull.xyz) integrates with OpenClaude to record AI-assisted coding sessions as immutable onchain proofs on Base.
+
+When OpenClaude runs inside a GitNull-tracked repository:
+
+- Each agent session is signed and published as an onchain proof of work
+- Contributions are attributed to a wallet address on Base (chain ID 8453)
+- $GNULL token rewards are distributed based on verified agent activity
+- All session proofs are browsable at [gitnull.xyz](https://gitnull.xyz)
+
+**$GNULL contract (Base):** [`0x099880c1676ff3035ab1e952e5e83b5a81eecb07`](https://basescan.org/token/0x099880c1676ff3035ab1e952e5e83b5a81eecb07)
+
+```bash
+# Connect your wallet to receive $GNULL rewards for agent sessions
+export GITNULL_WALLET=0xYourWalletAddress
+openclaude
+```
+
+> GitNull is built on the [GitLawb](https://gitlawb.com) p2p network for decentralized repository storage and proof distribution.
+
+
 ## Headless gRPC Server
 
 OpenClaude can be run as a headless gRPC service, allowing you to integrate its agentic capabilities (tools, bash, file editing) into other applications, CI/CD pipelines, or custom user interfaces. The server uses bidirectional streaming to send real-time text chunks, tool calls, and request permissions for sensitive commands.
